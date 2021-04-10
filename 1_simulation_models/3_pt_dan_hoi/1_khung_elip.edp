@@ -1,7 +1,5 @@
 
-// Khoi tao thanh sat hinh chu nhat
-// t la vector chi phuong cua duong thang
-// (x, y) la toa do diem di qua
+// Khoi tao
 border s1(t = 0, 5){x = t; y = 0; label = 1;}
 border s2(t = 15, 20){x = t; y = 0; label = 3;}
 int a1 = 5;
