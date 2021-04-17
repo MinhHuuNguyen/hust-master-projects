@@ -1,5 +1,5 @@
 load "medit"
-mesh Th = square(50, 50);
+mesh Th = square(20, 20);
 
 fespace Vh(Th, P1);
 Vh u, v, uold;

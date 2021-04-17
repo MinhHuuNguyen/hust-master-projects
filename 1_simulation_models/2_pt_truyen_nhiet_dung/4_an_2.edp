@@ -1,6 +1,6 @@
 load "medit"
 
-mesh Th = square(50, 50);
+mesh Th = square(20, 20);
 
 fespace Vh(Th, P1);
 Vh u, v, uold1, uold2;
@@ -20,8 +20,8 @@ for (int i = 0; i * dt < T; i++)
 	// Doi voi bai an, t chay tu dt
 	f = (1 + 2 * pi * pi) * exp((i + 1) * dt) * sin(pi * x) * sin(pi * y);
 	solve Heat(u, v, solver = LU)
-		= int2d(Th)(3 * u * v) + int2d(2 * dt * (dx(u) * dx(v) + dy(u) * dy(v))) // a(u, v)
-		- int2d(Th)(2 * dt * f * v) - int2d(4 * uold1 * v) + int2d(uold2 * v) // l(v)
+		= int2d(Th)(3 * u * v) + int2d(Th)(2 * dt * (dx(u) * dx(v) + dy(u) * dy(v))) // a(u, v)
+		- int2d(Th)(2 * dt * f * v) - int2d(Th)(4 * uold1 * v) + int2d(Th)(uold2 * v) // l(v)
 		+ on(1, 2, 3, 4, u = 0); // u = 0 tai bien Dirichlet
 	uold2 = uold1;
 	uold1 = u;

@@ -1,6 +1,6 @@
 load "medit"
 
-mesh Th = square(50, 50);
+mesh Th = square(20, 20);
 
 fespace Vh(Th, P1);
 Vh u, v, u0, uold;
@@ -22,7 +22,7 @@ for (int i = 0; i * dt < T; i++)
 	solve Heat(u, v, solver = LU)
 		= int2d(Th)(u * v) + int2d(Th)(dt / 2 * (dx(u) * dx(v) + dy(u) * dy(v))) // a(u, v)
 		+ int2d(Th)(dt / 2 * (dx(uold) * dx(v) + dy(uold) * dy(v))) // l(v)
-		- int2d(Th)(uold * v) - int2d(dt / 2 * v * (f0 + f1)) // l(v)
+		- int2d(Th)(uold * v) - int2d(Th)(dt / 2 * v * (f0 + f1)) // l(v)
 		+ on(1, 2, 3, 4, u = 0);
 	uold = u;
 	plot(u);
